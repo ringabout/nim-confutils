@@ -159,8 +159,8 @@ jobs:
           nimble install -y toml_serialization json_serialization unittest2
           rm -f nimble.lock
           env NIMFLAGS="${NIMFLAGS} --mm:refc" nimble test
-          let linux32 = ${{ matrix.target.os }} == "linux" && ${{ matrix.target.cpu }} == "i386"
-          if [[ ${{matrix.branch}} == "devel" && ${{linux32}} == 0 ]]; then
+
+          if [[ ${{matrix.branch}} == "devel" ]]; then
             echo -e "\nTesting with '--mm:orc':\n"
             env NIMFLAGS="${NIMFLAGS} --mm:orc" nimble test
           fi
